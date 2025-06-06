@@ -12,7 +12,7 @@ const Header = () => {
           Get up to 50% off new season styles, limited time only.
         </p>
         <div className="flex items-center justify-end">
-          <ul className="flex items-center gap-3">
+          <ul className="flex items-center gap-10">
             <li className="hover:text-orange-600">
               <Link to="/help-center">Help Center</Link>
             </li>

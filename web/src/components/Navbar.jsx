@@ -7,7 +7,7 @@ const Navbar = () => {
 
             <button className='uppercase flex items-center gap-3 text-xl hover:bg-gray-100 px-3 py-2 rounded-md cursor-pointer'> <span><SlidersHorizontal/></span> Shop By Filter</button>
         </div>
-        <div className='w-[60%] font-semibold'>
+        <div className='w-[50%] font-semibold'>
             <ul className='flex w-full justify-between text-lg capitalize '>
 
             {["Home", "fashoin", "Electronics", "bags", "Footwear", "Groceries", "Beauty"].map((item, index)=>(
