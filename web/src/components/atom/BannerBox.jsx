@@ -4,9 +4,8 @@ import smart_deals_2 from "../../assets/smart-deals-2.jpg";
 import fashion_deals from "../../assets/fashion-deals.webp";
 import iphone_deals from "../../assets/iphone-deals.webp";
 import cold_drinks_deals from "../../assets/cold-drinks-deals.webp";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { useEffect, useRef } from "react";
+import {ChevronRight, ChevronLeft } from "lucide-react";
 
 const banners = [
   { image: smart_deals, name: "smart-deals" },
@@ -16,78 +15,75 @@ const banners = [
   { image: smart_deals_2, name: "smart-deals-2" },
 ];
 
-function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "flex", background: "#7F00FF", borderRadius:"10px",}}
-      onClick={onClick}
-    />
-  );
-}
-
-function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "flex", background: "#7F00FF", borderRadius:"10px" }}
-      onClick={onClick}
-    />
-  );
-}
-
 const BannerBox = () => {
-  const settings = {
-    centerMode: true,
-    infinite: true,
-    centerPadding: "60px",
-    slidesToShow: 3,
-    speed: 500,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    arrows: true,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          centerPadding: "20px",
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-          centerPadding: "15px",
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          centerPadding: "10px",
-        },
-      },
-    ],
+  const scrollRef = useRef(null);
+
+    const scroll = (offset) => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({
+        left: offset,
+        behavior: "smooth",
+      });
+    }
   };
 
+useEffect(() => {
+    const container = scrollRef.current;
+
+    if (!container) return;
+
+    // Clone banners for seamless looping
+    const totalScrollWidth = container.scrollWidth;
+    const halfScrollWidth = totalScrollWidth / 2;
+
+    const interval = setInterval(() => {
+      if (container.scrollLeft >= halfScrollWidth) {
+        // Instantly reset to start for seamless loop
+        container.scrollTo({ left: 0, behavior: "auto" });
+      } else {
+        container.scrollBy({ left: 549, behavior: "smooth" }); // Small step for smooth flow
+      }
+    }, 2000); // Adjust speed (lower = smoother/slower)
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="w-full px-4">
-      <Slider {...settings}>
-        {banners.map((banner, index) => (
-          <Link key={index} to="/" className="px-2">
+     <div className="relative w-screen overflow-hidden">
+      <div
+        ref={scrollRef}
+        className="flex gap-5 w-full overflow-x-scroll scrollbar-hide"
+      >
+        {[...banners, ...banners].map((banner, index) => (
+          <Link
+            key={index}
+            to="/"
+            className="flex-shrink-0 w-[530px] overflow-hidden"
+          >
             <img
               src={banner.image}
               alt={banner.name}
-              className="w-full h-auto object-cover rounded-lg"
+              className="w-full h-65 object-cover rounded-lg"
             />
           </Link>
         ))}
-      </Slider>
+      </div>
+
+      {/* Left Button */}
+      <button
+        onClick={() => scroll(-549)}
+        className="absolute left-8 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow hover:bg-violet-500 hover:text-white z-10"
+      >
+        <ChevronLeft size={30} />
+      </button>
+
+      {/* Right Button */}
+      <button
+        onClick={() => scroll(549)}
+        className="absolute right-20 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow hover:bg-violet-500 hover:text-white z-10"
+      >
+        <ChevronRight size={30} />
+      </button>
     </div>
   );
 };

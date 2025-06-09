@@ -6,6 +6,9 @@ import Category from '../components/Category'
 import FreeShipping from '../components/atom/FreeShipping'
 import BannerSlider from '../components/BannerSlider'
 import PopularProductSection from '../components/PopularProductSection'
+import Footer from '../components/Footer'
+import LatestProducts from '../components/LatestProducts'
+import FeaturedProducts from '../components/FeaturedProducts'
 
 const Home = () => {
   return (
@@ -16,7 +19,10 @@ const Home = () => {
         <Category />
         <PopularProductSection/>
         <FreeShipping />
+        <LatestProducts />
+        <FeaturedProducts />
         <BannerSlider />
+        <Footer />
     </div>
   )
 }

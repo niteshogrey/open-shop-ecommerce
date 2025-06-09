@@ -39,7 +39,7 @@ const Header = () => {
           </button>
         </div>
         <div className="w-[35%] flex justify-end z-20">
-          <ul className="w-full flex text-xl justify-evenly items-center">
+          <ul className="w-full flex text-xl justify-evenly items-center text-gray-600">
             <li>
               <Link to="/login" className="hover:text-violet-600 font-semibold py-1 px-3 rounded-full hover:bg-gray-200">Login</Link>
             </li>

@@ -2,8 +2,8 @@ import { Truck } from 'lucide-react';
 
 const FreeShipping = () => {
   return (
-    <section className='w-full py-5 px-10'>
-        <div className='w-full  py-6 px-12 border-2 border-violet-600 flex items-center justify-between rounded-md'>
+    <section className='w-full flex justify-center items-center py-5 px-10'>
+        <div className='w-[80vw]  py-6 px-8 border-2 border-violet-600 flex items-center justify-between rounded-md'>
             <div className='flex items-center gap-4 '>
                 <Truck size={40} />
                 <span className='text-2xl font-bold'>Free Shipping</span>

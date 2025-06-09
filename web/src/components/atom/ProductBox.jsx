@@ -20,7 +20,7 @@ const ProductBox = () => {
       {/* Scroll Container */}
       <div
         ref={scrollRef}
-        className="flex w-full gap-5 m-5 px-5 overflow-x-scroll scroll-smooth snap-x snap-mandatory scrollbar-hide"
+        className="flex p-2 w-full gap-5 m-5 px-5 overflow-x-scroll scroll-smooth snap-x snap-mandatory scrollbar-hide"
       >
         {products.map((product, index) => (
           <div
@@ -80,7 +80,7 @@ const ProductBox = () => {
               </div>
             </div>
             <div className="px-3 mb-2">
-              <button className="font-semibold flex items-center justify-center gap-2 w-full py-1 border border-violet-500 rounded hover:bg-violet-500 hover:text-white">
+              <button className="font-semibold flex items-center justify-center gap-2 w-full py-1 border border-violet-500 rounded hover:bg-violet-500 hover:text-white uppercase">
                 <ShoppingCart size={18} />
                 Add to Cart
               </button>
