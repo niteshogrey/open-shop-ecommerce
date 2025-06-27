@@ -11,7 +11,6 @@ import { moderateScale, scale, verticalScale } from "react-native-size-matters";
 import { Colors } from "@/src/constants/colors";
 import { ProductType } from "@/src/types/type";
 import ProductCard from "./productCard";
-import ProductList from "./productList";
 
 type Props = {
   products: ProductType[];
@@ -88,7 +87,7 @@ const FlashSale = ({ products }: Props) => {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ gap: moderateScale(20) }}
           renderItem={({ index, item }) => (
-            <ProductCard item={item} index={index} />
+            <ProductCard item={item} index={index} productType="sale" />
           )}
         />
     </View>

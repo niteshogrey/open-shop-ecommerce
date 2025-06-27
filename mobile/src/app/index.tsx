@@ -44,7 +44,7 @@ const WelcomeScreen = (props: Props) => {
                 style={styles.description}
                 entering={FadeInRight.delay(500).duration(300).springify()}
               >
-                One Stop Solution for alll Yout Needs
+                One Stop Solution for all Your Needs
               </Animated.Text>
               <SocialButtons emailHref={"/signup"} />
               <View style={styles.loginRow}>

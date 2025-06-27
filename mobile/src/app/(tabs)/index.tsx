@@ -22,21 +22,21 @@ const HomeScreen = (props: Props) => {
   }, []);
 
   const getProducts = async () => {
-    const URL = `http://172.20.10.3:3001/products`;
+    const URL = `http://192.168.29.11:3001/products`;
     const res = await axios.get(URL);
     setProducts(res.data);
     // console.log(res.data);
   };
 
     const getCategories = async () => {
-    const URL = `http://172.20.10.3:3001/categories`;
+    const URL = `http://192.168.29.11:3001/categories`;
     const res = await axios.get(URL);
     setCategories(res.data);
     // console.log(res.data);
   };
 
     const getSaleProducts = async () => {
-    const URL = `http://172.20.10.3:3001/saleProducts`;
+    const URL = `http://192.168.29.11:3001/saleProducts`;
     const res = await axios.get(URL);
     setSaleProducts(res.data);
     // console.log(res.data);

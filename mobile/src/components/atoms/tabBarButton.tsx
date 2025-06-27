@@ -2,7 +2,7 @@ import { Text, StyleSheet, View } from "react-native";
 import React from "react";
 import { PlatformPressable } from "@react-navigation/elements";
 import { Colors } from "@/src/constants/colors";
-import { scale } from "react-native-size-matters";
+import { moderateScale, scale, verticalScale } from "react-native-size-matters";
 import { icons } from "@/src/constants/icons";
 
 type Props = {
@@ -34,7 +34,7 @@ const TabBarButton = (props: Props) => {
       <Text
         style={{
           color: isFocused ? Colors.primary : Colors.black,
-          fontWeight: isFocused ? "bold" : "normal", fontSize:13
+          fontWeight: isFocused ? "bold" : "normal", fontSize: moderateScale(11)
         }}
       >
         {label}
@@ -52,16 +52,16 @@ const styles = StyleSheet.create({
   badgeWrapper:{
     position:'absolute',
     backgroundColor: Colors.highlight,
-    borderRadius:50,
-    top:-5,
-    right:18,
-    paddingVertical:2,
-    paddingHorizontal:6,
+    borderRadius: 50,
+    top: verticalScale(-5),
+    right: scale(12),
+    paddingVertical: verticalScale(1),
+    paddingHorizontal: scale(6),
     zIndex:10
   },
   badgeText:{
     color: Colors.black,
-    fontSize:12
+    fontSize: moderateScale(12)
   }
 });
 export default TabBarButton;

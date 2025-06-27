@@ -34,14 +34,14 @@ const ProductList = ({ products, flatlist = true }: Props) => {
             marginBottom: verticalScale(20),
           }}
           renderItem={({ index, item }) => (
-            <ProductCard item={item} index={index} />
+            <ProductCard item={item} index={index} productType='regular' />
           )}
         />
       ) : (
         <View style={styles.itemsWrapper}>
           {products.map((item, index) => (
             <View key={index} style={styles.productWrapper}>
-              <ProductCard item={item} index={index} />
+              <ProductCard item={item} index={index} productType="regular"/>
             </View>
           ))}
         </View>
